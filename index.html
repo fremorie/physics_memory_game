@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>PHYSICS TIME</h1>
+      <button type="reset" id="shuffle" onclick="shuffleCards();">Shuffle</button>
+      <div id="timer">00:00:00</div>
+    </header>
+    <div class="game">
+      <div class="answers" id="left">
+        <div class="formula" id="1">Давление</div>
+        <div class="formula" id="2">Масса</div>
+        <div class="formula" id="3">Скорость</div>
+        <div class="formula" id="4">Путь</div>
+      </div>
+      <div class="container">
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+        <div class="card">
+          <div class="back"><img></div>
+          <div class="front"><img></div>
+        </div>
+      </div>
+      <div class="answers" id="right">
+        <div class="formula" id="5">Мощность</div>
+        <div class="formula" id="6">Работа</div>
+        <div class="formula" id="7">Объем</div>
+        <div class="formula" id="8">Плотность</div>
+      </div>
+
+    </div>
+
+    <div id="win-popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <p>WIN</p>
+        <p id="your-time"></p>
+        <button type="reset" id="play-again" onclick="shuffleCards();">Play again!</button>
+      </div>
+    </div>
+
+  </body>
+</html>
