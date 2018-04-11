@@ -53,10 +53,8 @@ function setImages() {
   var arr2 = arr.map(x => x+'_equals');
   var imageNames = arr.concat(arr2);
   shuffle(imageNames);
-  console.log(imageNames);
   var images = document.querySelectorAll(".back img");
   for (var i = 0, len = images.length; i < len; i++) {
-    console.log(i);
     var elem = images[i];
     elem.src = './images/tiles/png/' + imageNames[i].toString() + '.png';
   }
@@ -76,14 +74,23 @@ function enableCards() {
   }
 }
 
+function hideAnswers() {
+  var answers = document.querySelectorAll('.formula');
+  for (var i = 0, len = answers.length; i < len; i++) {
+    var elem = answers[i];
+    elem.parentElement.classList.remove('highlighted-formula');
+    elem.style.visibility = 'hidden';
+  }
+}
+
 function shuffleCards() {
   // close win-popup when play-again button is pressed
   var popup = document.getElementById('win-popup');
   popup.style.display = "none";
-
   openedCards = [];
   matchedCards = 0;
   disableCards();
+  hideAnswers();
   for (var i = 0, len = cards.length; i < len; i++) {
     var elem = cards[i];
     elem.classList.remove('matched');
@@ -105,7 +112,7 @@ var formulas = {
   1: '$$P = \\frac{F}{S}$$',
   2: '$$m = \\rho \\cdot  V$$',
   3: '$$v = \\frac{S}{t}$$',
-  4: '$$S = V \\cdot t$$',
+  4: '$$S = v \\cdot t$$',
   5: '$$N = \\frac{A}{t}$$',
   6: '$$A = F \\cdot S$$',
   7: '$$V = \\frac{m}{\\rho}$$',
@@ -114,10 +121,16 @@ var formulas = {
 
 function displayFormula(id) {
   var answer = document.getElementById(id);
-  console.log(answer);
   answer.innerHTML += formulas[id];
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, answer]);
+  answer.style.visibility = 'visible';
+  highlightFormula(answer.parentElement);
 }
+
+function highlightFormula(elem) {
+  elem.classList.add('highlighted-formula');
+}
+
 
 function matched(imgId) {
   imgId = parseInt(imgId);

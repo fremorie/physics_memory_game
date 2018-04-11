@@ -10,6 +10,27 @@
   }
 }
 
+@keyframes highlightFormulaLeft {
+  to {
+    border: 2px solid #587832;
+    background-color: #8cead4;
+    z-index: 10;
+    transform: scale(1.1) translateX(20px);
+  }
+}
+
+@keyframes highlightFormulaRight {
+  to {
+    border: 2px solid #587832;
+    background-color: #8cead4;
+    z-index: 10;
+    transform: scale(1.1) translateX(-20px);
+  }
+}
+
+.MathJax_CHTML {
+font-size: 25px !important;
+}
 
 body {
   text-align: center;
@@ -49,25 +70,22 @@ button:active {
   background-color: #bb99d8;
 }
 
-.game {
-  display: inline;
-}
-
-.formula {
+.formula-box {
+  perspective: 600px;
   border: 2px solid #d2b3db;
   border-radius: 15px;
-  line-height: 30px;
   margin: 10px;
   padding: 10px;
   background-color: white;
   box-shadow: 5px 5px 2px grey;
+  font-size: 20px;
+  height: 110px;
 }
 
 .answers {
   width: 30%;
   text-align: left;
   margin: 2px 10px;
-  font-size: 20px;
 }
 
 #left {
@@ -111,7 +129,7 @@ button:active {
   /*position: absolute;*/
   /*margin: 2px 10px;
   margin-right: 20%;*/
-  margin-top: 10px;
+  margin: 10px auto;
   /*margin-left: 35%;
   margin-right: 35%;*/
   display: inline-grid;
@@ -228,4 +246,22 @@ button:active {
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+
+#right .highlighted-formula {
+  animation-duration: 0.7s;
+  animation-name: highlightFormulaRight;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+#left .highlighted-formula {
+  animation-duration: 0.7s;
+  animation-name: highlightFormulaLeft;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+.front {
+  transform: rotateX(0deg);
 }
