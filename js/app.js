@@ -13,6 +13,34 @@ var firsCardOpened = false;
 var currentTimer = null;
 var start = null;
 
+function setSizes() {
+  var totalWidth = window.innerWidth;
+  var totalHeight = window.innerHeight;
+  console.log(totalWidth);
+  var columnWidth = (totalWidth - 200)/3;
+  var answersBlockHeight = (0.5*totalHeight)/4;
+  var cardWidth = columnWidth/4;
+  console.log(columnWidth);
+  var answersDivs = document.getElementsByClassName('answers');
+  for (var i = 0, len = answersDivs.length; i < len; i++) {
+    answersDivs[i].style.width = columnWidth;
+  }
+  var formulaDivs = document.getElementsByClassName('formula-box');
+  for (var i = 0, len = formulaDivs.length; i < len; i++) {
+    formulaDivs[i].style.height = answersBlockHeight;
+  }
+  var cardDiv = document.getElementsByClassName('card');
+  for (var i = 0; i < cardDiv.length; i++) {
+    cardDiv[i].style.width = cardWidth;
+    cardDiv[i].style.height = cardWidth;
+  }
+  var images = document.querySelectorAll('img')
+  for (var i = 0; i < images.length; i++) {
+    images[i].style.width = cardWidth;
+    images[i].style.height = cardWidth;
+  }
+}
+
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -121,7 +149,7 @@ var formulas = {
 
 function displayFormula(id) {
   var answer = document.getElementById(id);
-  answer.innerHTML += formulas[id];
+  answer.innerHTML = formulas[id];
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, answer]);
   answer.style.visibility = 'visible';
   highlightFormula(answer.parentElement);
@@ -227,7 +255,9 @@ function stopTimer(t) {
 
 
 $(document).ready(function() {
+  window.addEventListener("resize", setSizes);
   console.log('ready!');
+  setSizes();
   var delta = 0;
   cards = document.querySelectorAll(".card");
   counter = document.getElementById('timer');
